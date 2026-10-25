@@ -14,6 +14,7 @@
 <svg hidden aria-hidden="true">
   <symbol id="al-icon-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"><circle cx="12" cy="12" r="8.5"/><path d="M8 12.5l2.75 2.75L16 10"/></symbol>
   <symbol id="al-icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="al-icon-settings" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"><path d="M3.5 7h9M16.5 7h4M3.5 12h3M10.5 12h10M3.5 17h11M18.5 17h2"/><circle cx="14.5" cy="7" r="2"/><circle cx="8.5" cy="12" r="2"/><circle cx="16.5" cy="17" r="2"/></symbol>
   <symbol id="al-icon-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17"/><ellipse cx="12" cy="12" rx="4.5" ry="8.5"/></symbol>
 </svg>
 
@@ -21,25 +22,43 @@
 
   <div class="al-cluster al-cluster--between pc-head">
     <div class="al-cluster pc-brand">
-      <!-- The toolbar icon, decorative: the title beside it already names
+      <!-- The logo's star, decorative: the title beside it already names
            the extension. Drawn in the text's colour, like the system's own
            icons. -->
       <span class="pc-logo" aria-hidden="true"></span>
       <h1 class="pc-title">Power Close</h1>
     </div>
-    <!-- Dismisses the popup. Named for what it closes, so it isn't taken
-         for the action that closes tabs. -->
-    <button class="al-button al-button--sm al-button--icon pc-dismiss"
-            id="dismiss" type="button" aria-label="Close this popup">
-      <svg class="al-icon" aria-hidden="true"><use href="#al-icon-close"/></svg>
-    </button>
+    <div class="al-cluster pc-head__end">
+      <!-- Opens the settings page, in a tab of its own. -->
+      <button class="al-button al-button--sm al-button--icon al-button--quiet"
+              id="settings" type="button" aria-label="Settings" title="Settings">
+        <svg class="al-icon" aria-hidden="true"><use href="#al-icon-settings"/></svg>
+      </button>
+      <!-- Dismisses the popup. Named for what it closes, so it isn't taken
+           for the action that closes tabs. -->
+      <button class="al-button al-button--sm al-button--icon pc-dismiss"
+              id="dismiss" type="button" aria-label="Close this popup">
+        <svg class="al-icon" aria-hidden="true"><use href="#al-icon-close"/></svg>
+      </button>
+    </div>
   </div>
 
   <div class="al-field">
     <label class="al-label" for="keyword">Domain or keyword</label>
-    <input class="al-input" id="keyword" type="text" inputmode="url"
-           autocomplete="off" spellcheck="false"
-           placeholder="example.com" aria-describedby="keyword-hint matches">
+    <!-- A combobox: the open tabs' domains are suggested under the field as
+         it's typed in (the ARIA APG's list autocomplete pattern). The arrow
+         keys move through them and Enter takes one; the focus stays in the
+         field throughout. -->
+    <div class="pc-combo">
+      <input class="al-input" id="keyword" type="text" inputmode="url"
+             autocomplete="off" spellcheck="false"
+             role="combobox" aria-autocomplete="list" aria-expanded="false"
+             aria-controls="suggestions"
+             placeholder="example.com" aria-describedby="keyword-hint matches">
+      <ul class="al-menu pc-suggestions" id="suggestions" role="listbox"
+          aria-label="Open domains" hidden></ul>
+    </div>
+    <!-- Says what's matched, as the settings have it. -->
     <p class="al-hint" id="keyword-hint">Matches anywhere in a tab's address, in every window.</p>
   </div>
 
@@ -80,6 +99,6 @@
 
 </main>
 
-<script src="popup.js"></script>
+<script type="module" src="popup.js"></script>
 </body>
 </html>

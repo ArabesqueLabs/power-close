@@ -25,25 +25,57 @@ close before anything does. Press <kbd>Enter</kbd>, or the button that names
 the count, to close them; <kbd>Esc</kbd> closes the popup and leaves your tabs
 alone.
 
-You can also right-click a page and choose **Close all tabs from this domain**.
+<kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> opens the popup from the keyboard
+(change it in your browser's extension shortcuts). As you type, the domains of
+your open tabs that start with what you've typed are suggested under the
+field: <kbd>↓</kbd> and <kbd>Enter</kbd> take one.
+
+You can also right-click a page, anywhere on it (an image or selected text
+too), and choose **Close all tabs from this domain**. It can be on the tab's
+own menu as well, in Firefox and recent versions of Chrome.
 
 ### What matches
 
 - **The popup** matches what you type anywhere in a tab's full address,
-ignoring case, across every window, pinned tabs included. So `github.com` also
-closes `gist.github.com`, and a search results page whose address contains
-"github.com".
+ignoring case, across every window. So `github.com` also closes
+`gist.github.com`, and a search results page whose address contains
+"github.com". Domains and addresses in other scripts match as you'd read them:
+`مثال.مصر` finds the tabs on that domain.
 
-- **The right-click option** matches the page's hostname, without its leading
-`www.`, in the same way, so it closes the site's subdomains too.
+- **The right-click option** matches the page's exact hostname, so it closes
+that site's tabs only: not its subdomains, and `www.github.com` and
+`github.com` count as different sites. A setting widens it to the site's
+subdomains.
+
+### Settings
+
+Open them from the popup's settings button, or from your browser's extensions
+page. Each applies as soon as you change it, and they sync with your browser.
+
+| Setting | Default |
+|---|---|
+| Close pinned tabs too | On |
+| Match tabs' titles | Off |
+| Match the text on the page (asks your browser for access to read pages) | Off |
+| Regular expressions, typed as `/pattern/` | Off |
+| Suggest domains as you type | On |
+| Right-click option on pages | On |
+| Right-click option on tabs (where the browser has a tab menu) | Off |
+| Which tabs the right-click option closes: the exact domain, or its subdomains too | Exact |
+
+<img src="website/screenshots/settings-light.png" alt="The settings page" width="640">
 
 Closed too many? Your browser's Reopen Closed Tab
 (<kbd>Ctrl</kbd>/<kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd>) brings them back.
 
 ## Privacy
 
-Power Close reads your tabs' addresses to match and close them, and nothing
-else. It has NO network code, collects NO data, and needs NO account.
+Power Close reads your tabs' addresses (and titles) to match and close them,
+and nothing else. If you turn on matching the text on the page, it asks your
+browser for access to read pages, reads them only when you open the popup, and
+keeps what it reads in the popup until it closes; turn the setting off and the
+access is given back. It has NO network code, collects NO data, and needs NO
+account.
 
 ## Development
 
@@ -67,12 +99,18 @@ unpacked** and pick `dist/chrome/`.
 - **Firefox:** open `about:debugging#/runtime/this-firefox`, choose **Load
 Temporary Add-on…** and pick `dist/firefox/manifest.json`.
 
-The source is in `src/`. The two browsers share everything except their
-manifests (`src/manifest-chrome.json` and `src/manifest-firefox.json`), so
-change both when you change one.
+The source is in `src/`: the popup in `src/popup/`, the settings page in
+`src/options/`, the right-click option in `src/background.js`, and what they
+share (the settings and the matching rules) in `src/lib/`, as ES modules. The
+two browsers share everything except their manifests
+(`src/manifest-chrome.json` and `src/manifest-firefox.json`), so change both
+when you change one.
 
-`make screenshots` retakes the screenshots and the GIF above (it needs Node
-22+, Chrome and ffmpeg).
+`make screenshots` retakes the popup's screenshots, the GIF above and the
+settings page's screenshot, and makes the stores' screenshots: five at
+1280x800 for the Chrome Web Store in `dist/screenshots/chrome/`, and the same
+five at 2400x1800 for addons.mozilla.org in `dist/screenshots/firefox/` (it
+needs Node 22+, Chrome and ffmpeg).
 
 ## Design
 
