@@ -35,23 +35,28 @@ body {
   --al-cluster-gap: var(--al-space-2);
 }
 
+/* Settings, then the dismiss, close together at the end. */
+.pc-head__end {
+  --al-cluster-gap: var(--al-space-1);
+}
+
 /* Pulled out by its own inner padding, so the cross sits level with the
    popup's edge rather than the button's box (as the notice's dismiss does). */
 .pc-dismiss {
   margin-inline-end: calc(-1 * var(--al-space-2));
 }
 
-/* The toolbar icon is a single-colour glyph on transparency, so it's drawn
-   as a mask in the text's colour rather than placed as an image: it then
-   holds up on the dark theme, where the grey it's painted in would all but
-   disappear. */
+/* The logo's star (icons/star.svg): at this size, below 24px, the full
+   mark's tabs would clog, so the star stands in for it. It's one colour, so
+   it's drawn as a mask in the text's colour rather than placed as an image,
+   and holds up on the dark theme. */
 .pc-logo {
   inline-size: var(--al-size-icon);
   block-size: var(--al-size-icon);
   flex: none;
   background: currentColor;
-  -webkit-mask: url("../icons/128.png") center / contain no-repeat;
-  mask: url("../icons/128.png") center / contain no-repeat;
+  -webkit-mask: url("../icons/star.svg") center / contain no-repeat;
+  mask: url("../icons/star.svg") center / contain no-repeat;
 }
 
 /* The popup's title, not a page's: the display face at interface size. */
@@ -59,6 +64,35 @@ body {
   font-size: var(--al-text-md);
   font-weight: var(--al-weight-medium);
   letter-spacing: var(--al-tracking-none);
+}
+
+/* The field and its suggestions: the list lies over what's under the
+   field, at its width, rather than pushing the popup taller as it's typed
+   in. */
+.pc-combo {
+  position: relative;
+}
+.pc-suggestions {
+  position: absolute;
+  inset-block-start: calc(100% + var(--al-space-1));
+  inset-inline: 0;
+  z-index: 1;
+  max-inline-size: none;
+  min-inline-size: 0;
+  list-style: none;
+}
+.pc-suggestion {
+  justify-content: space-between;
+}
+/* The one the arrow keys are on: the focus stays in the field, so it's
+   marked as a hovered item is. */
+.pc-suggestion[aria-selected="true"] {
+  background: var(--al-color-surface-sunk);
+  box-shadow: inset 0 0 0 var(--al-border-focus) var(--al-color-focus);
+}
+.pc-suggestion__count {
+  font-size: var(--al-text-xs);
+  color: var(--al-color-text-muted);
 }
 
 /* The action and its keys on one line, wrapping to two if the keys don't

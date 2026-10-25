@@ -1,0 +1,97 @@
+<!doctype html>
+<!-- A store screenshot: the claim at the start, a shot of the popup or the
+     settings page at the end, over the system's texture, as the social card
+     has it. ?shot= names the shot (its file is shots/<shot>.png) and
+     ?scheme= light or dark. It fills the window, so one page makes both the
+     Chrome Web Store's 1280x800 and Firefox's 2400x1800 (1200x900 at 2x).
+     Rendered to dist/screenshots/ by scripts/screenshots.mjs. -->
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <title>Store screenshot</title>
+  <link rel="stylesheet" href="/website/vendor/arabesque/fonts/fonts.css">
+  <link rel="stylesheet" href="/website/vendor/arabesque/dist/arabesque.css">
+  <style>
+    html, body { margin: 0; inline-size: 100vw; block-size: 100vh; overflow: hidden; }
+    .store {
+      position: relative;
+      box-sizing: border-box;
+      inline-size: 100vw;
+      block-size: 100vh;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 72px;
+      align-items: center;
+      padding: 72px 80px;
+      background: var(--al-color-bg);
+    }
+    .store .al-pattern__art { position: absolute; inset: 0; }
+    .store > * { position: relative; }
+    .store__text { display: flex; flex-direction: column; justify-content: space-between; block-size: 100%; }
+    .store .al-lockup { font-size: 32px; gap: 16px; }
+    .store .al-mark { inline-size: 52px; block-size: 52px; }
+    .pc-mark {
+      display: inline-block;
+      background: currentColor;
+      -webkit-mask: url("/website/img/mark.svg") center / contain no-repeat;
+      mask: url("/website/img/mark.svg") center / contain no-repeat;
+    }
+    .store h1 { margin: 0 0 24px; font-size: 60px; line-height: 1.1; text-wrap: balance; }
+    .store__lede { margin: 0; font-size: 26px; line-height: 1.45; color: var(--al-color-text-muted); text-wrap: pretty; }
+    .store__foot { margin: 0; font-size: 24px; color: var(--al-color-text-muted); }
+    /* The popup at a size a store's thumbnail can read; the settings page,
+       which is taller than any screenshot, from its top, faded out. */
+    .store__shot {
+      margin: 0;
+      inline-size: var(--w);
+      max-block-size: calc(100vh - 144px);
+      border: 1px solid var(--al-color-line-strong);
+      border-radius: var(--al-radius-sm);
+      background: var(--al-color-bg);
+      overflow: hidden;
+      box-shadow: 0 24px 48px -24px rgb(0 0 0 / 0.25);
+    }
+    .store__shot img { display: block; inline-size: 100%; block-size: auto; }
+    .store__shot--long img { -webkit-mask: linear-gradient(#000 80%, transparent); mask: linear-gradient(#000 80%, transparent); }
+  </style>
+</head>
+<body>
+  <section class="al-pattern store">
+    <div class="al-pattern__art" aria-hidden="true" data-pattern></div>
+    <div class="store__text">
+      <span class="al-lockup"><span class="al-mark pc-mark" aria-hidden="true"></span><span class="al-wordmark">Power Close</span></span>
+      <div>
+        <h1 class="al-display" data-title></h1>
+        <p class="store__lede" data-lede></p>
+      </div>
+      <p class="store__foot">power-close.com</p>
+    </div>
+    <figure class="store__shot"><img alt=""></figure>
+  </section>
+  <script type="module">
+    import { drawPattern } from "/website/vendor/arabesque/js/pattern.js";
+    const params = new URLSearchParams(location.search);
+    const shot = params.get("shot");
+    document.documentElement.dataset.theme = params.get("scheme") === "dark" ? "dark" : "light";
+    document.querySelector("[data-title]").textContent = params.get("title");
+    document.querySelector("[data-lede]").textContent = params.get("lede");
+
+    // The shot is taken at 4x. The popup is shown at 1.5x, or as big as the
+    // screenshot's height allows; the settings page, taller than that, at
+    // up to half the width, cut off at the bottom.
+    const img = document.querySelector(".store__shot img");
+    img.src = `/shots/${shot}.png`;
+    await img.decode();
+    const figure = document.querySelector(".store__shot");
+    const [width, height] = [img.naturalWidth / 4, img.naturalHeight / 4];
+    const long = height > 600;
+    figure.classList.toggle("store__shot--long", long);
+    const zoom = long ? Math.min(1.5, (innerWidth * 0.46) / width) : Math.min(1.5, (innerHeight - 144) / height);
+    figure.style.setProperty("--w", `${width * zoom}px`);
+
+    await document.fonts.ready;
+    drawPattern(document.querySelector("[data-pattern]"));
+    document.body.dataset.ready = "";
+  </script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Power Close settings</title>
+<link rel="icon" href="../icons/16.png">
+<link rel="stylesheet" href="../vendor/arabesque/fonts/fonts.css">
+<link rel="stylesheet" href="../vendor/arabesque/arabesque.css">
+<link rel="stylesheet" href="options.css">
+</head>
+<body>
+
+<!-- Every setting applies as it's changed, so they're switches and radios
+     with no Save button; the save state at the top says each one stuck. -->
+<main class="pc-options">
+
+  <span class="al-lockup pc-options__lockup"><span class="al-mark pc-mark" aria-hidden="true"></span><span class="al-wordmark">Power Close</span></span>
+
+  <header class="al-page-head">
+    <h1>Settings</h1>
+    <div class="al-page-head__end">
+      <p class="al-save-state" id="save-state" role="status"></p>
+    </div>
+  </header>
+
+  <form class="al-stack al-stack--loose" id="settings" novalidate>
+
+    <fieldset class="al-fieldset">
+      <legend>Which tabs match</legend>
+      <div class="al-choices">
+        <label class="al-choice">
+          <input class="al-switch" type="checkbox" role="switch" name="closePinned">
+          <span class="al-choice__text">
+            <span>Close pinned tabs too</span>
+            <span class="al-choice__hint">Off, pinned tabs stay open even when they match.</span>
+          </span>
+        </label>
+        <label class="al-choice">
+          <input class="al-switch" type="checkbox" role="switch" name="matchTitles">
+          <span class="al-choice__text">
+            <span>Match tabs’ titles</span>
+            <span class="al-choice__hint">What you type is looked for in each tab’s title as well as its address.</span>
+          </span>
+        </label>
+        <label class="al-choice">
+          <input class="al-switch" type="checkbox" role="switch" name="matchPageText" aria-describedby="page-text-error">
+          <span class="al-choice__text">
+            <span>Match the text on the page</span>
+            <span class="al-choice__hint">For closing every page that says “No results”, say. Your browser
+              will ask to let Power Close read the sites you visit; the text is read
+              when you open the popup, and stays in your browser. Tabs your browser
+              has unloaded to save memory can’t be read.</span>
+          </span>
+        </label>
+        <p class="al-error" id="page-text-error" hidden></p>
+        <label class="al-choice">
+          <input class="al-switch" type="checkbox" role="switch" name="regex">
+          <span class="al-choice__text">
+            <span>Regular expressions</span>
+            <span class="al-choice__hint">Type one between slashes: <code>/^https:\/\/(www\.)?reddit\.com/</code>.
+              It ignores capitals unless you give it flags of your own.</span>
+          </span>
+        </label>
+      </div>
+    </fieldset>
+
+    <fieldset class="al-fieldset">
+      <legend>As you type</legend>
+      <div class="al-choices">
+        <label class="al-choice">
+          <input class="al-switch" type="checkbox" role="switch" name="suggest">
+          <span class="al-choice__text">
+            <span>Suggest domains</span>
+            <span class="al-choice__hint">The domains of your open tabs that start with what you’ve typed,
+              under the field. <kbd class="al-kbd">↓</kbd> and <kbd class="al-kbd">Enter</kbd> take one.</span>
+          </span>
+        </label>
+      </div>
+    </fieldset>
+
+    <fieldset class="al-fieldset">
+      <legend>Close all tabs from this domain</legend>
+      <div class="al-choices">
+        <label class="al-choice">
+          <input class="al-switch" type="checkbox" role="switch" name="menuOnPage">
+          <span class="al-choice__text">
+            <span>In the menu when you right-click a page</span>
+            <span class="al-choice__hint">Anywhere on it: its background, an image, a video or some selected text.</span>
+          </span>
+        </label>
+        <!-- Shown only where the browser has a menu on the tabs themselves. -->
+        <label class="al-choice" id="menu-on-tab" hidden>
+          <input class="al-switch" type="checkbox" role="switch" name="menuOnTab">
+          <span class="al-choice__text">
+            <span>In the menu when you right-click a tab</span>
+          </span>
+        </label>
+      </div>
+      <fieldset class="al-fieldset">
+        <legend>Which tabs it closes</legend>
+        <div class="al-choices">
+          <label class="al-choice">
+            <input type="radio" name="menuScope" value="exact">
+            <span class="al-choice__text">
+              <span>Only that exact domain</span>
+              <span class="al-choice__hint">From github.com: github.com, not gist.github.com or www.github.com.</span>
+            </span>
+          </label>
+          <label class="al-choice">
+            <input type="radio" name="menuScope" value="subdomains">
+            <span class="al-choice__text">
+              <span>That domain and its subdomains</span>
+              <span class="al-choice__hint">From github.com or www.github.com: both, and gist.github.com.</span>
+            </span>
+          </label>
+        </div>
+      </fieldset>
+    </fieldset>
+
+    <fieldset class="al-fieldset">
+      <legend>Keyboard shortcut</legend>
+      <p class="pc-shortcut">Opens Power Close: <span id="shortcut">…</span></p>
+      <div>
+        <button class="al-button al-button--sm" id="change-shortcut" type="button">Change it</button>
+      </div>
+    </fieldset>
+
+  </form>
+
+</main>
+
+<script type="module" src="options.js"></script>
+</body>
+</html>

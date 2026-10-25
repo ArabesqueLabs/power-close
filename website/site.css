@@ -3,13 +3,13 @@
    page is. These rules are unlayered, so they win over the system's layers;
    every value is a token except the screenshots' own sizes. */
 
-/* The extension's icon as the lockup's mark: a single-colour glyph, drawn
-   as a mask in the text's colour so it holds up in dark, as in the popup. */
+/* The logo's mark (img/mark.svg) in the lockup: one colour, drawn as a mask
+   in the text's colour so it holds up in dark, as in the popup. */
 .pc-mark {
   display: inline-block;
   background: currentColor;
-  -webkit-mask: url("img/icon-360.png") center / contain no-repeat;
-  mask: url("img/icon-360.png") center / contain no-repeat;
+  -webkit-mask: url("img/mark.svg") center / contain no-repeat;
+  mask: url("img/mark.svg") center / contain no-repeat;
 }
 
 /* The opening: the claim and the actions at the start, the popup itself at

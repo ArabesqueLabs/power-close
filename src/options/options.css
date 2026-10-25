@@ -1,0 +1,43 @@
+/* Power Close settings: a tab of its own, so a page's measure rather than
+   the popup's width. As in popup.css, these rules are unlayered, so they win
+   over the system's layers; every value is a token. */
+
+body {
+  background: var(--al-color-bg);
+}
+
+.pc-options {
+  max-inline-size: var(--al-size-measure);
+  margin-inline: auto;
+  padding: var(--al-space-8) var(--al-space-4) var(--al-space-12);
+}
+
+.pc-options__lockup {
+  margin-block-end: var(--al-space-8);
+}
+
+/* Nothing saved yet: no state to show, not even its dot. */
+.al-save-state:empty {
+  display: none;
+}
+
+/* The logo's mark (icons/mark.svg) in the lockup, as on the website: one
+   colour, drawn as a mask in the text's colour so it holds up in dark. */
+.pc-mark {
+  display: inline-block;
+  background: currentColor;
+  -webkit-mask: url("../icons/mark.svg") center / contain no-repeat;
+  mask: url("../icons/mark.svg") center / contain no-repeat;
+}
+
+/* A question inside a question: indented under its switches. */
+.al-fieldset .al-fieldset {
+  margin-block-start: var(--al-space-3);
+}
+
+.pc-shortcut {
+  margin: 0;
+}
+#shortcut .al-kbd + .al-kbd {
+  margin-inline-start: var(--al-space-1);
+}

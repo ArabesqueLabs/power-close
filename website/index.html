@@ -96,7 +96,8 @@
       ]
     }
   </script>
-  <link rel="icon" href="img/favicon.png" type="image/png">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="img/favicon.png" type="image/png" sizes="32x32">
   <link rel="apple-touch-icon" href="img/icon-180.png">
   <link rel="stylesheet" href="vendor/arabesque/fonts/fonts.css">
   <link rel="stylesheet" href="vendor/arabesque/dist/arabesque.css">
@@ -182,7 +183,8 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5.5 5.5"/></svg>
           <h3>A domain or a keyword</h3>
           <p>Whatever you type is looked for anywhere in each tab's address, in every window, capitals
-            or not. <code>facebook.com</code> closes Facebook; <code>docs</code> closes every doc.</p>
+            or not. <code>facebook.com</code> closes Facebook; <code>docs</code> closes every doc. Turn on
+            titles, the text on the page, or regular expressions if you need them.</p>
         </li>
         <li>
           <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="13"/><path d="M8 12h8M12 8v8"/></svg>
@@ -193,14 +195,33 @@
         <li>
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 3.5h13v17h-13z"/><path d="M9 9.5l6 6M15 9.5l-6 6"/></svg>
           <h3>From the page you're on</h3>
-          <p>Right-click any page and choose “Close all tabs from this domain”: every tab from that
-            site goes, with or without its <code>www.</code></p>
+          <p>Right-click anywhere on a page, an image included, and choose “Close all tabs from this
+            domain”: every tab on that exact domain goes, or its subdomains too, if you'd rather.</p>
         </li>
         <li>
           <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="6.5" width="17" height="11"/><path d="M7 10h1M11 10h2M16 10h1M8 14h8"/></svg>
           <h3>Made for the keyboard</h3>
-          <p>The field is ready as the popup opens. Type, press <kbd class="al-kbd">Enter</kbd>, and
-            they're gone; <kbd class="al-kbd">Esc</kbd> leaves everything as it was.</p>
+          <p><kbd class="al-kbd">Alt</kbd> <kbd class="al-kbd">Shift</kbd> <kbd class="al-kbd">P</kbd>
+            opens it, ready to type. Press <kbd class="al-kbd">Enter</kbd>, and they're gone;
+            <kbd class="al-kbd">Esc</kbd> leaves everything as it was.</p>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 6.5h17v4h-17z"/><path d="M6 14.5h12M6 18h8"/></svg>
+          <h3>Suggests as you type</h3>
+          <p>The domains of your open tabs that start with what you've typed, and how many tabs each
+            has, under the field. <kbd class="al-kbd">↓</kbd> and <kbd class="al-kbd">Enter</kbd> take one.</p>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 7h9M16.5 7h4M3.5 12h3M10.5 12h10M3.5 17h11M18.5 17h2"/><circle cx="14.5" cy="7" r="2"/><circle cx="8.5" cy="12" r="2"/><circle cx="16.5" cy="17" r="2"/></svg>
+          <h3>Set up your way</h3>
+          <p>Keep pinned tabs open, choose what's matched and where the right-click option shows.
+            Each setting applies at once, and follows you between your devices.</p>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17"/><ellipse cx="12" cy="12" rx="4.5" ry="8.5"/></svg>
+          <h3>In any script</h3>
+          <p>Domains and addresses in Arabic, Chinese or any other script match as you read them:
+            type <bdi lang="ar">مثال.مصر</bdi> and that site's tabs are found.</p>
         </li>
         <li>
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17A8.5 8.5 0 0 0 12 3.5z"/></svg>
@@ -227,10 +248,10 @@
       <div class="gallery">
         <figure class="shot-fig">
           <picture>
-            <source srcset="screenshots/empty-dark.png" media="(prefers-color-scheme: dark)">
-            <img src="screenshots/empty-light.png" width="320" height="340" loading="lazy" alt="The popup as it opens, its field empty">
+            <source srcset="screenshots/suggest-dark.png" media="(prefers-color-scheme: dark)">
+            <img src="screenshots/suggest-light.png" width="320" height="340" loading="lazy" alt="g typed in, and the open domains that start with it suggested under the field: github.com, 3 tabs, and gist.github.com, 1 tab">
           </picture>
-          <figcaption><strong>As it opens</strong><span>The field has the focus: start typing.</span></figcaption>
+          <figcaption><strong>Suggested as you type</strong><span>Your open domains, and how many tabs each.</span></figcaption>
         </figure>
         <figure class="shot-fig">
           <picture>
@@ -261,7 +282,9 @@
           <summary>Which tabs will it close?</summary>
           <div class="al-disclosure__body"><p>Every tab, in every window, whose address has what you typed
             anywhere in it, capitals or not. So <code>github</code> closes <code>gist.github.com</code>
-            too; type the whole domain to close just one site. Pinned tabs that match close as well.</p></div>
+            too; type the whole domain to close just one site. Pinned tabs that match close as well,
+            unless you turn that off in the settings, where you can also have it match tabs' titles or
+            the text on their pages.</p></div>
         </details>
         <details class="al-disclosure">
           <summary>I closed too many. Can I get them back?</summary>
@@ -274,7 +297,10 @@
           <summary>Why does it ask to read my tabs?</summary>
           <div class="al-disclosure__body"><p>To match what you type against their addresses, and to count
             and close them. It doesn't send them, or anything else, anywhere: the extension has no
-            network code at all, as <a class="al-link" href="https://github.com/ArabesqueLabs/power-close">its source</a> shows.</p></div>
+            network code at all, as <a class="al-link" href="https://github.com/ArabesqueLabs/power-close">its source</a> shows.</p>
+            <p>If you turn on matching the text on the page, it asks your browser for access to read
+            pages too. It reads them only when you open the popup, and gives the access back when you
+            turn the setting off.</p></div>
         </details>
         <details class="al-disclosure">
           <summary>Who makes it?</summary>
