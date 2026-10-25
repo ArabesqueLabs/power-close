@@ -1,8 +1,12 @@
+<img width="180" height="180" alt="icon-180" src="https://github.com/user-attachments/assets/ab0d6bac-8529-4470-8d3c-ca763b5c4df6" />
+
 # Power Close
 
 A browser extension, for the tab addict, that closes every tab whose address
 contains a keyword or a domain name. Many Facebook tabs open, scattered across
 windows? Type `facebook.com`, press Enter, and they're all closed.
+
+## How it looks in action
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="website/screenshots/demo-dark.gif">
