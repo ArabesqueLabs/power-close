@@ -7,7 +7,3 @@ node_modules
 # build and distribution folders
 temp
 /dist
-# wrangler local state
-.wrangler
-# the website's vendored design system is committed, built output and all
-!website/vendor/arabesque/dist/

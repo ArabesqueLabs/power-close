@@ -4,13 +4,14 @@
      has it. ?shot= names the shot (its file is shots/<shot>.png) and
      ?scheme= light or dark. It fills the window, so one page makes both the
      Chrome Web Store's 1280x800 and Firefox's 2400x1800 (1200x900 at 2x).
-     Rendered to dist/screenshots/ by scripts/screenshots.mjs. -->
+     Rendered to dist/screenshots/ by scripts/screenshots.mjs. The design
+     system comes from its release on design.arabesquelabs.com. -->
 <html lang="en" dir="ltr" data-theme="light">
 <head>
   <meta charset="utf-8">
   <title>Store screenshot</title>
-  <link rel="stylesheet" href="/website/vendor/arabesque/fonts/fonts.css">
-  <link rel="stylesheet" href="/website/vendor/arabesque/dist/arabesque.css">
+  <link rel="stylesheet" href="https://design.arabesquelabs.com/v/0.9.0/fonts/fonts.css">
+  <link rel="stylesheet" href="https://design.arabesquelabs.com/v/0.9.0/dist/arabesque.css">
   <style>
     html, body { margin: 0; inline-size: 100vw; block-size: 100vh; overflow: hidden; }
     .store {
@@ -33,8 +34,8 @@
     .pc-mark {
       display: inline-block;
       background: currentColor;
-      -webkit-mask: url("/website/img/mark.svg") center / contain no-repeat;
-      mask: url("/website/img/mark.svg") center / contain no-repeat;
+      -webkit-mask: url("/src/icons/mark.svg") center / contain no-repeat;
+      mask: url("/src/icons/mark.svg") center / contain no-repeat;
     }
     .store h1 { margin: 0 0 24px; font-size: 60px; line-height: 1.1; text-wrap: balance; }
     .store__lede { margin: 0; font-size: 26px; line-height: 1.45; color: var(--al-color-text-muted); text-wrap: pretty; }
@@ -69,7 +70,7 @@
     <figure class="store__shot"><img alt=""></figure>
   </section>
   <script type="module">
-    import { drawPattern } from "/website/vendor/arabesque/js/pattern.js";
+    import { drawPattern } from "https://design.arabesquelabs.com/v/0.9.0/js/pattern.js";
     const params = new URLSearchParams(location.search);
     const shot = params.get("shot");
     document.documentElement.dataset.theme = params.get("scheme") === "dark" ? "dark" : "light";

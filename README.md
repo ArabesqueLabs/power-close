@@ -9,8 +9,8 @@ windows? Type `facebook.com`, press Enter, and they're all closed.
 ## How it looks in action
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="website/screenshots/demo-dark.gif">
-  <img src="website/screenshots/demo-light.gif" alt="The Power Close popup in use: github.com is typed in, “Closes 4 of 12 open tabs.” appears above the Close 4 tabs button, and Enter closes them: “Closed 4 tabs.”" width="320">
+  <source media="(prefers-color-scheme: dark)" srcset="https://power-close.com/screenshots/demo-dark.gif">
+  <img src="https://power-close.com/screenshots/demo-light.gif" alt="The Power Close popup in use: github.com is typed in, “Closes 4 of 12 open tabs.” appears above the Close 4 tabs button, and Enter closes them: “Closed 4 tabs.”" width="320">
 </picture>
 
 ## Install
@@ -67,7 +67,7 @@ page. Each applies as soon as you change it, and they sync with your browser.
 | Right-click option on tabs (where the browser has a tab menu) | Off |
 | Which tabs the right-click option closes: the exact domain, or its subdomains too | Exact |
 
-<img src="website/screenshots/settings-light.png" alt="The settings page" width="640">
+<img src="https://power-close.com/screenshots/settings-light.png" alt="The settings page" width="640">
 
 Closed too many? Your browser's Reopen Closed Tab
 (<kbd>Ctrl</kbd>/<kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd>) brings them back.
@@ -111,7 +111,10 @@ two browsers share everything except their manifests
 when you change one.
 
 `make screenshots` retakes the popup's screenshots, the GIF above and the
-settings page's screenshot, and makes the stores' screenshots: five at
+settings page's screenshot, in `dist/screenshots/` (copy them to
+`sites/power-close.com/public/screenshots/` in
+[the websites repository](https://github.com/ArabesqueLabs/websites), which
+serves them at power-close.com), and makes the stores' screenshots: five at
 1280x800 for the Chrome Web Store in `dist/screenshots/chrome/`, and the same
 five at 2400x1800 for addons.mozilla.org in `dist/screenshots/firefox/` (it
 needs Node 22+, Chrome and ffmpeg).
