@@ -1,13 +1,15 @@
-// Screenshots of the popup and the settings page, for the website and the
+// Screenshots of the popup and the settings page, for power-close.com and the
 // README: src/ served as it is, the extension's API stood in for by a few
 // made-up tabs, and each photographed by headless Chrome in light and dark,
 // at 2x.
 //
 //   node scripts/screenshots.mjs        (or `make screenshots`)
 //
-// Writes website/screenshots/*.png, and demo-*.gif (the popup in use, slowly:
+// Writes dist/screenshots/*.png, and demo-*.gif (the popup in use, slowly:
 // it opens, github.com is typed, the count follows, Enter closes them),
-// replacing them. And the stores' screenshots, a few of the shots each with
+// replacing them: copy them to the websites repository's
+// sites/power-close.com/public/screenshots/, where the site and this README
+// show them from. And the stores' screenshots, a few of the shots each with
 // a claim beside it (scripts/store.html), to dist/screenshots/chrome/
 // (1280x800, the Chrome Web Store's size, five at most) and
 // dist/screenshots/firefox/ (2400x1800, the most addons.mozilla.org takes). Needs Node 22+ (for its WebSocket), Chrome or Chromium
@@ -19,7 +21,7 @@ import { tmpdir } from "node:os";
 import { extname, join, normalize } from "node:path";
 
 const SRC = "src";
-const OUT = "website/screenshots";
+const OUT = "dist/screenshots";
 const STORE_OUT = "dist/screenshots";
 const PORT = 9348;
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));

@@ -1,6 +1,6 @@
 all: clean build
 
-.PHONY: all clean build firefox chrome validate screenshots social
+.PHONY: all clean build firefox chrome validate screenshots
 
 # clean
 clean:
@@ -71,15 +71,10 @@ validate:
 	@python3 -m json.tool src/manifest-firefox.json > /dev/null && echo "✓ Firefox manifest is valid JSON"
 	@python3 -m json.tool src/manifest-chrome.json > /dev/null && echo "✓ Chrome manifest is valid JSON"
 
-# screenshots of the popup, light and dark, for the website and the README
-# and a GIF of it in use; and the stores' screenshots, to
+# screenshots of the popup, light and dark, for power-close.com and the
+# README and a GIF of it in use, to dist/screenshots/; and the stores' screenshots, to
 # dist/screenshots/chrome/ (1280x800, no alpha, five) and
 # dist/screenshots/firefox/ (2400x1800) (needs Node 22+, Chrome and ffmpeg;
 # see scripts/screenshots.mjs and scripts/store.html)
 screenshots:
 	node scripts/screenshots.mjs
-
-# the social card (Open Graph, X), in English and Arabic, 1200x630, to
-# website/img/social/ (needs Node 22+ and Chrome; see social/render.mjs)
-social:
-	node social/render.mjs
