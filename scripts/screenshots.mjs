@@ -12,8 +12,13 @@
 // show them from. And the stores' screenshots, a few of the shots each with
 // a claim beside it (scripts/store.html), to dist/screenshots/chrome/
 // (1280x800, the Chrome Web Store's size, five at most) and
-// dist/screenshots/firefox/ (2400x1800, the most addons.mozilla.org takes). Needs Node 22+ (for its WebSocket), Chrome or Chromium
-// (CHROME= to say where), and ffmpeg for the GIFs. No packages.
+// dist/screenshots/firefox/ (2400x1800, the most addons.mozilla.org takes),
+// and dist/screenshots/safari/ (2880x1800, the most the Mac App Store
+// takes), with the Mac App Store's app preview, preview.mp4 (1920x1080,
+// 30fps H.264, with a silent stereo track): the popup running beside the
+// tabs it closes, as github.com and then google are typed and closed. Needs
+// Node 22+ (for its WebSocket), Chrome or Chromium (CHROME= to say where),
+// and ffmpeg for the GIFs and the video. No packages.
 import { spawn, spawnSync } from "node:child_process";
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { createServer } from "node:http";
@@ -74,6 +79,7 @@ const STUB = `
     commands: { getAll: (done) => later(done, [{ name: "_execute_action", shortcut: "Alt+Shift+P" }]) },
   };
   window.close = () => {};
+  window.__tabs = () => tabs;
 `;
 
 // ---- the shots -----------------------------------------------------------------------------
@@ -100,13 +106,32 @@ const STORE = [
   { shot: "closed", scheme: "light", title: "Gone, and counted.",
     lede: "Four GitHub tabs closed in one keystroke, and the popup says so." },
   { shot: "settings", scheme: "light", title: "Match titles, page text or a regular expression.",
-    lede: "Keep pinned tabs, close a site from the right-click menu, and pick your shortcut." },
+    lede: "Keep pinned tabs, close a site from the right-click menu, and pick your shortcut.",
+    safari: { lede: "Keep pinned tabs, and close a site from the right-click menu." } },
   { shot: "popup", scheme: "dark", title: "Light or dark, as your browser is.",
-    lede: "Free and open source, for Chrome and Firefox. Nothing you type leaves your browser." },
+    lede: "Free and open source, for Chrome and Firefox. Nothing you type leaves your browser.",
+    safari: { lede: "Free and open source, for Safari, Chrome and Firefox. Nothing you type leaves your browser." } },
 ];
 
-/** Each store's size, as a window and the scale it's taken at. */
-const STORES = { chrome: { width: 1280, height: 800, scale: 1 }, firefox: { width: 1200, height: 900, scale: 2 } };
+/** Each store's size, as a window and the scale it's taken at. A store's own words, where it has any, are under its name in STORE. */
+const STORES = {
+  chrome: { width: 1280, height: 800, scale: 1 },
+  firefox: { width: 1200, height: 900, scale: 2 },
+  safari: { width: 1440, height: 900, scale: 2 },
+};
+
+/**
+ * The Mac App Store's app preview (1920x1080: a 1280x720 window at 1.5x):
+ * what's said beside the popup, and what's done in it, each step held for
+ * so long (ms). 15 to 30 seconds in all, as the App Store asks.
+ */
+const PREVIEW = {
+  width: 1280, height: 720, scale: 1.5, fps: 30,
+  title: "Close every tab that matches, at once.",
+  lede: "Type a site or a keyword, see which tabs match, in every window, and press Enter.",
+  opened: 2000, key: 220, typedHold: 2600, closedHold: 2600, lastHold: 4000,
+  steps: ["github.com", "google"],
+};
 
 /** The demo: what's typed, a key at a time, and how long each frame stays (ms). */
 const DEMO = { typed: "github.com", opened: 1800, key: 380, typedHold: 2800, closedHold: 3600 };
@@ -228,6 +253,51 @@ async function demo(b, scheme) {
   return out;
 }
 
+/**
+ * The app preview: the popup, live, in store.html, filmed a frame at a time
+ * as it's typed in and closes tabs, the frames held as long as PREVIEW says,
+ * and made into a 30fps H.264 video by ffmpeg.
+ */
+async function preview(b) {
+  const P = PREVIEW;
+  await b.size(P.width, P.height, P.scale);
+  const query = new URLSearchParams({ live: "", scheme: "light", title: P.title, lede: P.lede });
+  await b.go(`${site}/scripts/store.html?${query}`);
+  await b.eval(`while (!("ready" in document.body.dataset)) await new Promise((r) => setTimeout(r, 50));`);
+  await sleep(200);
+
+  const frames = mkdtempSync(join(tmpdir(), "power-close-preview-"));
+  const list = [];
+  const frame = async (ms) => {
+    await sleep(160);
+    const file = join(frames, `${String(list.length).padStart(3, "0")}.png`);
+    await b.shot(file);
+    list.push(`file '${file}'`, `duration ${ms / 1000}`);
+  };
+  await frame(P.opened);
+  for (const [n, text] of P.steps.entries()) {
+    for (let i = 1; i <= text.length; i++) {
+      await b.eval(`await live.type(${JSON.stringify(text.slice(0, i))})`);
+      await frame(i === text.length ? P.typedHold : P.key);
+    }
+    await b.eval("await live.enter()");
+    await frame(n === P.steps.length - 1 ? P.lastHold : P.closedHold);
+  }
+  list.push(list.at(-2));
+  writeFileSync(join(frames, "list.txt"), list.join("\n") + "\n");
+
+  const out = join(STORE_OUT, "safari", "preview.mp4");
+  const ff = spawnSync("ffmpeg", ["-y", "-loglevel", "error",
+    "-f", "concat", "-safe", "0", "-i", join(frames, "list.txt"),
+    "-f", "lavfi", "-i", "anullsrc=channel_layout=stereo:sample_rate=48000",
+    "-vf", `fps=${P.fps},scale=${P.width * P.scale}:${P.height * P.scale},format=yuv420p`,
+    "-c:v", "libx264", "-profile:v", "high", "-preset", "slow", "-crf", "16", "-r", String(P.fps),
+    "-c:a", "aac", "-b:a", "256k", "-shortest", "-movflags", "+faststart", out], { stdio: "inherit" });
+  rmSync(frames, { recursive: true, force: true });
+  if (ff.error || ff.status !== 0) throw new Error(`ffmpeg couldn't make ${out}${ff.error ? `: ${ff.error.message}` : ""}`);
+  return out;
+}
+
 // ---- making them ---------------------------------------------------------------------------
 
 // The store pages' shots, at 4x, so they're sharp at Firefox's size.
@@ -265,7 +335,8 @@ try {
     mkdirSync(join(STORE_OUT, store), { recursive: true });
     await b.size(width, height, scale);
     for (const [i, s] of STORE.entries()) {
-      const query = new URLSearchParams({ shot: `${s.shot}-${s.scheme}`, scheme: s.scheme, title: s.title, lede: s.lede });
+      const words = { ...s, ...s[store] };
+      const query = new URLSearchParams({ shot: `${s.shot}-${s.scheme}`, scheme: s.scheme, title: words.title, lede: words.lede });
       await b.go(`${site}/scripts/store.html?${query}`);
       await b.eval(`while (!("ready" in document.body.dataset)) await new Promise((r) => setTimeout(r, 50));`);
       await sleep(200);
@@ -278,6 +349,8 @@ try {
     await b.scheme(scheme);
     console.log(await demo(b, scheme));
   }
+  await b.scheme("light");
+  console.log(await preview(b));
   if (b.errors.length) throw new Error(`the popup threw:\n${b.errors.join("\n")}`);
 } finally {
   await b.close();

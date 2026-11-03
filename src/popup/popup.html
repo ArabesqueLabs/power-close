@@ -79,6 +79,15 @@
     </p>
   </div>
 
+  <!-- Safari only, until it's allowed on every website: till then it hides
+       the tabs' addresses from Power Close, so nothing would match. -->
+  <div class="al-notice al-notice--warning" id="no-access" hidden>
+    <div class="al-notice__body"><p>Safari isn’t letting Power Close see your tabs’
+      addresses, so it can’t match them. Allow it on every website: in Safari’s
+      Settings, under Extensions, choose Power Close, then Edit Websites, and
+      set Other Websites to Allow.</p></div>
+  </div>
+
   <!-- What happened, after the fact; it stays until the next action. -->
   <div class="al-notice al-notice--success" id="done" hidden>
     <svg class="al-icon" aria-hidden="true"><use href="#al-icon-success"/></svg>

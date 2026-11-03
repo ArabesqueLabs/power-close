@@ -5,7 +5,12 @@
      ?scheme= light or dark. It fills the window, so one page makes both the
      Chrome Web Store's 1280x800 and Firefox's 2400x1800 (1200x900 at 2x).
      Rendered to dist/screenshots/ by scripts/screenshots.mjs. The design
-     system comes from its release on design.arabesquelabs.com. -->
+     system comes from its release on design.arabesquelabs.com.
+
+     ?live instead shows the popup itself, running (in a frame, over the
+     made-up tabs scripts/screenshots.mjs gives it), beside the tabs it can
+     close: for the App Store's app preview, a video, which the script films
+     by calling window.live's type() and enter(). -->
 <html lang="en" dir="ltr" data-theme="light">
 <head>
   <meta charset="utf-8">
@@ -54,6 +59,27 @@
     }
     .store__shot img { display: block; inline-size: 100%; block-size: auto; }
     .store__shot--long img { -webkit-mask: linear-gradient(#000 80%, transparent); mask: linear-gradient(#000 80%, transparent); }
+
+    /* ?live: the open tabs, a line each, and the popup at 1.5x, side by
+       side, both from the top, so the popup grows down as it says more. */
+    .store--live { gap: 48px; padding: 56px 64px; }
+    .store--live h1 { font-size: 48px; }
+    .store--live .store__lede { font-size: 22px; }
+    .store__live { display: flex; gap: 32px; align-items: flex-start; align-self: start; margin-block-start: 24px; }
+    .store__live[hidden] { display: none; }
+    .store__live .store__shot { inline-size: 480px; }
+    .store__live iframe { display: block; border: 0; inline-size: 320px; zoom: 1.5; }
+    .tabs { margin: 0; padding: 0; list-style: none; inline-size: 280px; display: flex; flex-direction: column; gap: 4px; }
+    .tab {
+      display: block; padding: 5px 10px;
+      border: 1px solid var(--al-color-line); border-radius: var(--al-radius-sm);
+      background: var(--al-color-surface); font-size: 14px; line-height: 1.4;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .tab__host { font-weight: 600; }
+    .tab__path { color: var(--al-color-text-muted); }
+    .tab--match { border-color: var(--al-color-danger); background: var(--al-color-danger-wash); }
+    .tabs__count { margin: 0 0 6px; font-size: 16px; color: var(--al-color-text-muted); }
   </style>
 </head>
 <body>
@@ -67,7 +93,11 @@
       </div>
       <p class="store__foot">power-close.com</p>
     </div>
-    <figure class="store__shot"><img alt=""></figure>
+    <figure class="store__shot" data-still><img alt=""></figure>
+    <div class="store__live" data-live hidden>
+      <div><p class="tabs__count" data-count></p><ul class="tabs" data-tabs></ul></div>
+      <figure class="store__shot"><iframe title="Power Close" scrolling="no"></iframe></figure>
+    </div>
   </section>
   <script type="module">
     import { drawPattern } from "https://design.arabesquelabs.com/v/0.9.0/js/pattern.js";
@@ -77,22 +107,81 @@
     document.querySelector("[data-title]").textContent = params.get("title");
     document.querySelector("[data-lede]").textContent = params.get("lede");
 
-    // The shot is taken at 4x. The popup is shown at 1.5x, or as big as the
-    // screenshot's height allows; the settings page, taller than that, at
-    // up to half the width, cut off at the bottom.
-    const img = document.querySelector(".store__shot img");
-    img.src = `/shots/${shot}.png`;
-    await img.decode();
-    const figure = document.querySelector(".store__shot");
-    const [width, height] = [img.naturalWidth / 4, img.naturalHeight / 4];
-    const long = height > 600;
-    figure.classList.toggle("store__shot--long", long);
-    const zoom = long ? Math.min(1.5, (innerWidth * 0.46) / width) : Math.min(1.5, (innerHeight - 144) / height);
-    figure.style.setProperty("--w", `${width * zoom}px`);
-
+    if (params.has("live")) {
+      await live();
+    } else {
+      await still();
+    }
     await document.fonts.ready;
     drawPattern(document.querySelector("[data-pattern]"));
     document.body.dataset.ready = "";
+
+    // The popup, running, and the tabs it closes beside it, each shown as
+    // its domain and path, red while what's typed matches it (anywhere in
+    // its address, as the popup matches by default).
+    async function live() {
+      document.querySelector(".store").classList.add("store--live");
+      document.querySelector("[data-still]").hidden = true;
+      document.querySelector("[data-live]").hidden = false;
+      const frame = document.querySelector("iframe");
+      await new Promise((r) => { frame.onload = r; frame.src = "/src/popup/popup.html"; });
+      const w = frame.contentWindow;
+      const d = frame.contentDocument;
+      await d.fonts.ready;
+      const field = d.getElementById("keyword");
+      field.style.caretColor = "transparent";
+      const settle = () => new Promise((r) => setTimeout(r, 60));
+      const fit = () => { frame.style.blockSize = Math.ceil(d.documentElement.getBoundingClientRect().height) + "px"; };
+      const show = () => {
+        const typed = field.value.trim().toLowerCase();
+        const open = w.__tabs();
+        document.querySelector("[data-count]").textContent = open.length + (open.length === 1 ? " open tab" : " open tabs");
+        document.querySelector("[data-tabs]").replaceChildren(...open.map((tab) => {
+          const url = new URL(tab.url);
+          const item = document.createElement("li");
+          item.className = "tab" + (typed && tab.url.toLowerCase().includes(typed) ? " tab--match" : "");
+          const host = document.createElement("span");
+          host.className = "tab__host";
+          host.textContent = url.hostname;
+          const path = document.createElement("span");
+          path.className = "tab__path";
+          path.textContent = url.pathname + url.hash;
+          item.append(host, path);
+          return item;
+        }));
+        fit();
+      };
+      await settle();
+      show();
+      window.live = {
+        type: async (text) => {
+          field.value = text;
+          field.dispatchEvent(new w.Event("input"));
+          await settle();
+          show();
+        },
+        enter: async () => {
+          field.dispatchEvent(new w.KeyboardEvent("keydown", { key: "Enter" }));
+          await settle();
+          show();
+        },
+      };
+    }
+
+    // The shot is taken at 4x. The popup is shown at 1.5x, or as big as the
+    // screenshot's height allows; the settings page, taller than that, at
+    // up to half the width, cut off at the bottom.
+    async function still() {
+      const img = document.querySelector(".store__shot img");
+      img.src = `/shots/${shot}.png`;
+      await img.decode();
+      const figure = document.querySelector(".store__shot");
+      const [width, height] = [img.naturalWidth / 4, img.naturalHeight / 4];
+      const long = height > 600;
+      figure.classList.toggle("store__shot--long", long);
+      const zoom = long ? Math.min(1.5, (innerWidth * 0.46) / width) : Math.min(1.5, (innerHeight - 144) / height);
+      figure.style.setProperty("--w", `${width * zoom}px`);
+    }
   </script>
 </body>
 </html>

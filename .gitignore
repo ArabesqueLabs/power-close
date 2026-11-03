@@ -7,3 +7,7 @@ node_modules
 # build and distribution folders
 temp
 /dist
+# Xcode: per-user state, and builds
+xcuserdata
+*.xcuserstate
+DerivedData

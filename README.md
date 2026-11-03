@@ -17,9 +17,16 @@ windows? Type `facebook.com`, press Enter, and they're all closed.
 
 - [Chrome Web Store](https://chrome.google.com/webstore/detail/power-close/jjpmcpmmajigbkjchbkoclipomlmpaaj)
 - [Firefox Add-ons](https://addons.mozilla.org/firefox/addon/firefox-power-close/)
+- Safari, on the Mac, iPhone and iPad: coming to the App Store
 
-It runs on Chrome (Manifest V3), Firefox 140 and later, and Firefox for Android
-142 and later.
+It runs on Chrome (Manifest V3), Firefox 140 and later, Firefox for Android
+142 and later, and Safari 17 and later on macOS, iOS and iPadOS.
+
+In Safari, after turning Power Close on in Safari's Settings, under
+Extensions, allow it on every website (**Edit Websites…**, then **Other
+Websites: Allow**). Safari only shows an extension the addresses of tabs on
+sites it's allowed on, so without that it can't match your tabs; the popup
+says so when it can't.
 
 ## Usage
 
@@ -36,7 +43,9 @@ field: <kbd>↓</kbd> and <kbd>Enter</kbd> take one.
 
 You can also right-click a page, anywhere on it (an image or selected text
 too), and choose **Close all tabs from this domain**. It can be on the tab's
-own menu as well, in Firefox and recent versions of Chrome.
+own menu as well, in Firefox and recent versions of Chrome. (Safari on the
+iPhone and iPad has no right-click menu, and Safari doesn't let you change
+the shortcut.)
 
 ### What matches
 
@@ -54,7 +63,8 @@ subdomains.
 ### Settings
 
 Open them from the popup's settings button, or from your browser's extensions
-page. Each applies as soon as you change it, and they sync with your browser.
+page. Each applies as soon as you change it, and they sync with your browser
+where it syncs extensions' settings.
 
 | Setting | Default |
 |---|---|
@@ -78,22 +88,29 @@ Power Close reads your tabs' addresses (and titles) to match and close them,
 and nothing else. If you turn on matching the text on the page, it asks your
 browser for access to read pages, reads them only when you open the popup, and
 keeps what it reads in the popup until it closes; turn the setting off and the
-access is given back. It has NO network code, collects NO data, and needs NO
+access is given back. (In Safari, the access to websites it needs to see your
+tabs' addresses at all already covers this, so there's nothing more to ask
+for or give back.) It has NO network code, collects NO data, and needs NO
 account.
 
 ## Development
 
-You'll need `make` and `zip`.
+You'll need `make` and `zip`, and for Safari, a Mac with Xcode.
 
 ```
-make            # build both: dist/chrome/ and dist/firefox/
+make            # build all three: dist/chrome/, dist/firefox/ and dist/safari/
 make chrome     # build Chrome only
 make firefox    # build Firefox only
+make safari     # build Safari only: dist/safari/, and its unsigned Mac app
 make validate   # check the manifests are valid JSON
 ```
 
-Each folder in `dist/` holds the unpacked extension and a `power-close.zip` of
-it for the stores.
+The Chrome and Firefox folders in `dist/` hold the unpacked extension and a
+`power-close.zip` of it for the stores. Safari's extensions come inside an
+app: the Xcode project in `safari/Power Close/` builds one for macOS and one
+for iOS and iPadOS, with `dist/safari/`'s files in them, so run
+`make safari-files` (just those files) or `make` before building it in
+Xcode, every time `src/` changes.
 
 To try a build:
 
@@ -103,21 +120,71 @@ unpacked** and pick `dist/chrome/`.
 - **Firefox:** open `about:debugging#/runtime/this-firefox`, choose **Load
 Temporary Add-on…** and pick `dist/firefox/manifest.json`.
 
+- **Safari (Mac):** run `make safari`, and open the app it builds in
+`dist/safari-build/Build/Products/Debug/` once. In Safari, turn on **Show
+features for web developers** in Settings, under Advanced, then **Allow
+Unsigned Extensions** in the Develop menu (it's needed again each time Safari
+restarts), and turn Power Close on in Settings, under Extensions. Or open
+`safari/Power Close/Power Close.xcodeproj` and run the **Power Close (macOS)**
+scheme, signed with your team.
+
+- **Safari (iPhone, iPad):** open the Xcode project and run the **Power Close
+(iOS)** scheme on a simulator or your device, then turn Power Close on in
+Settings > Apps > Safari > Extensions.
+
 The source is in `src/`: the popup in `src/popup/`, the settings page in
 `src/options/`, the right-click option in `src/background.js`, and what they
 share (the settings and the matching rules) in `src/lib/`, as ES modules. The
-two browsers share everything except their manifests
-(`src/manifest-chrome.json` and `src/manifest-firefox.json`), so change both
-when you change one.
+three browsers share everything except their manifests
+(`src/manifest-chrome.json`, `src/manifest-firefox.json` and
+`src/manifest-safari.json`), so change all three when you change one. Two
+things differ for Safari:
+
+- Safari won't run a background service worker that's an ES module, so
+`make` joins `src/lib/settings.js`, `src/lib/match.js` and `src/background.js`
+into one plain script for it. Keep the names those three declare at the top
+level distinct, and their `import`s and `export`s at the start of a line.
+
+- Safari shows an extension the addresses of tabs only on sites it's allowed on, so
+its manifest asks for every site up front (`host_permissions`), where Chrome
+and Firefox ask only when matching the text on pages is turned on
+(`optional_host_permissions`). `SAFARI` in `src/lib/settings.js` tells the
+pages which they're in.
+
+The Xcode project was made by Apple's `safari-web-extension-packager` and
+refers to the files in `dist/safari/` rather than copying them; it holds only
+the app around the extension (its icons, from `src/icons/mark.svg`, and the
+window that says how to turn the extension on). If you add a file or folder at
+the top of `dist/safari/`, add it to the project's **Shared (Extension)**
+group too, for both extension targets.
+
+### Releasing
+
+Change the version in the three manifests, and in Xcode (each target's
+**Version**, `MARKETING_VERSION`, and a higher **Build**,
+`CURRENT_PROJECT_VERSION`). Then:
+
+- **Chrome and Firefox:** `make`, and upload each `dist/*/power-close.zip`.
+
+- **Safari:** `make safari-files`, open the Xcode project, choose **Any Mac** for
+the macOS scheme and **Product > Archive**, then **Distribute App > App Store
+Connect** from the Organizer; and the same for the iOS scheme with **Any iOS
+Device**. The app's bundle identifier is `com.arabesquelabs.PowerClose` (the
+extension's, `com.arabesquelabs.PowerClose.Extension`); create the app in App
+Store Connect with it, as one app for macOS and iOS, before the first upload.
 
 `make screenshots` retakes the popup's screenshots, the GIF above and the
 settings page's screenshot, in `dist/screenshots/` (copy them to
 `sites/power-close.com/public/screenshots/` in
 [the websites repository](https://github.com/ArabesqueLabs/websites), which
 serves them at power-close.com), and makes the stores' screenshots: five at
-1280x800 for the Chrome Web Store in `dist/screenshots/chrome/`, and the same
-five at 2400x1800 for addons.mozilla.org in `dist/screenshots/firefox/` (it
-needs Node 22+, Chrome and ffmpeg).
+1280x800 for the Chrome Web Store in `dist/screenshots/chrome/`, the same
+five at 2400x1800 for addons.mozilla.org in `dist/screenshots/firefox/`,
+and the same five at 2880x1800 for the Mac App Store in
+`dist/screenshots/safari/`, with its app preview, `preview.mp4` (1920x1080,
+about 21 seconds: the popup closing GitHub's tabs, then Google's, beside the
+list of open tabs). It needs Node 22+, Chrome and ffmpeg. The App Store wants
+the iPhone's and iPad's own screenshots, taken in the simulator.
 
 ## Design
 

@@ -1,0 +1,967 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 110;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		957DFE713099792B00669522 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957DFE703099792B00669522 /* AppDelegate.swift */; };
+		957DFE733099792B00669522 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957DFE723099792B00669522 /* SceneDelegate.swift */; };
+		957DFE763099792B00669522 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 957DFE743099792B00669522 /* LaunchScreen.storyboard */; };
+		957DFE793099792B00669522 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 957DFE773099792B00669522 /* Main.storyboard */; };
+		957DFE823099792B00669522 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957DFE813099792B00669522 /* AppDelegate.swift */; };
+		957DFE853099792B00669522 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 957DFE833099792B00669522 /* Main.storyboard */; };
+		957DFE8C3099792B00669522 /* Power Close Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 957DFE8B3099792B00669522 /* Power Close Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		957DFE963099792B00669522 /* Power Close Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 957DFE953099792B00669522 /* Power Close Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		957DFE9B3099792B00669522 /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = 957DFE603099792A00669522 /* Main.html */; };
+		957DFE9C3099792B00669522 /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = 957DFE603099792A00669522 /* Main.html */; };
+		957DFE9D3099792B00669522 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 957DFE623099792A00669522 /* Icon.png */; };
+		957DFE9E3099792B00669522 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 957DFE623099792A00669522 /* Icon.png */; };
+		957DFE9F3099792B00669522 /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = 957DFE633099792A00669522 /* Style.css */; };
+		957DFEA03099792B00669522 /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = 957DFE633099792A00669522 /* Style.css */; };
+		957DFEA13099792B00669522 /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = 957DFE643099792A00669522 /* Script.js */; };
+		957DFEA23099792B00669522 /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = 957DFE643099792A00669522 /* Script.js */; };
+		957DFEA33099792B00669522 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957DFE653099792A00669522 /* ViewController.swift */; };
+		957DFEA43099792B00669522 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957DFE653099792A00669522 /* ViewController.swift */; };
+		957DFEA53099792B00669522 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 957DFE663099792B00669522 /* Assets.xcassets */; };
+		957DFEA63099792B00669522 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 957DFE663099792B00669522 /* Assets.xcassets */; };
+		957DFEA73099792B00669522 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957DFE683099792B00669522 /* SafariWebExtensionHandler.swift */; };
+		957DFEA83099792B00669522 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957DFE683099792B00669522 /* SafariWebExtensionHandler.swift */; };
+		957DFEC13099792B00669522 /* options in Resources */ = {isa = PBXBuildFile; fileRef = 957DFEBA3099792B00669522 /* options */; };
+		957DFEC23099792B00669522 /* popup in Resources */ = {isa = PBXBuildFile; fileRef = 957DFEBB3099792B00669522 /* popup */; };
+		957DFEC33099792B00669522 /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = 957DFEBC3099792B00669522 /* background.js */; };
+		957DFEC43099792B00669522 /* icons in Resources */ = {isa = PBXBuildFile; fileRef = 957DFEBD3099792B00669522 /* icons */; };
+		957DFEC53099792B00669522 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 957DFEBE3099792B00669522 /* manifest.json */; };
+		957DFEC63099792B00669522 /* lib in Resources */ = {isa = PBXBuildFile; fileRef = 957DFEBF3099792B00669522 /* lib */; };
+		957DFEC73099792B00669522 /* vendor in Resources */ = {isa = PBXBuildFile; fileRef = 957DFEC03099792B00669522 /* vendor */; };
+		957DFEC83099792B00669522 /* options in Resources */ = {isa = PBXBuildFile; fileRef = 957DFEBA3099792B00669522 /* options */; };
+		957DFEC93099792B00669522 /* popup in Resources */ = {isa = PBXBuildFile; fileRef = 957DFEBB3099792B00669522 /* popup */; };
+		957DFECA3099792B00669522 /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = 957DFEBC3099792B00669522 /* background.js */; };
+		957DFECB3099792B00669522 /* icons in Resources */ = {isa = PBXBuildFile; fileRef = 957DFEBD3099792B00669522 /* icons */; };
+		957DFECC3099792B00669522 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 957DFEBE3099792B00669522 /* manifest.json */; };
+		957DFECD3099792B00669522 /* lib in Resources */ = {isa = PBXBuildFile; fileRef = 957DFEBF3099792B00669522 /* lib */; };
+		957DFECE3099792B00669522 /* vendor in Resources */ = {isa = PBXBuildFile; fileRef = 957DFEC03099792B00669522 /* vendor */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		957DFE8D3099792B00669522 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 957DFE5A3099792A00669522 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 957DFE8A3099792B00669522;
+			remoteInfo = "Power Close Extension (iOS)";
+		};
+		957DFE973099792B00669522 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 957DFE5A3099792A00669522 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 957DFE943099792B00669522;
+			remoteInfo = "Power Close Extension (macOS)";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		957DFEAE3099792B00669522 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			dstPath = "";
+			dstSubfolder = PlugIns;
+			files = (
+				957DFE8C3099792B00669522 /* Power Close Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+		};
+		957DFEB53099792B00669522 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			dstPath = "";
+			dstSubfolder = PlugIns;
+			files = (
+				957DFE963099792B00669522 /* Power Close Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		957DFE613099792A00669522 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/Main.html; sourceTree = "<group>"; };
+		957DFE623099792A00669522 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		957DFE633099792A00669522 /* Style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = Style.css; sourceTree = "<group>"; };
+		957DFE643099792A00669522 /* Script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Script.js; sourceTree = "<group>"; };
+		957DFE653099792A00669522 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		957DFE663099792B00669522 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		957DFE683099792B00669522 /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
+		957DFE6D3099792B00669522 /* Power Close.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Power Close.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		957DFE703099792B00669522 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		957DFE723099792B00669522 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		957DFE753099792B00669522 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		957DFE783099792B00669522 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		957DFE7A3099792B00669522 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		957DFE7F3099792B00669522 /* Power Close.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Power Close.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		957DFE813099792B00669522 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		957DFE843099792B00669522 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		957DFE863099792B00669522 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		957DFE8B3099792B00669522 /* Power Close Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Power Close Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		957DFE903099792B00669522 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		957DFE953099792B00669522 /* Power Close Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Power Close Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		957DFE9A3099792B00669522 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		957DFEBA3099792B00669522 /* options */ = {isa = PBXFileReference; lastKnownFileType = folder; name = options; path = ../../../dist/safari/options; sourceTree = "<group>"; };
+		957DFEBB3099792B00669522 /* popup */ = {isa = PBXFileReference; lastKnownFileType = folder; name = popup; path = ../../../dist/safari/popup; sourceTree = "<group>"; };
+		957DFEBC3099792B00669522 /* background.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = background.js; path = ../../../dist/safari/background.js; sourceTree = "<group>"; };
+		957DFEBD3099792B00669522 /* icons */ = {isa = PBXFileReference; lastKnownFileType = folder; name = icons; path = ../../../dist/safari/icons; sourceTree = "<group>"; };
+		957DFEBE3099792B00669522 /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = manifest.json; path = ../../../dist/safari/manifest.json; sourceTree = "<group>"; };
+		957DFEBF3099792B00669522 /* lib */ = {isa = PBXFileReference; lastKnownFileType = folder; name = lib; path = ../../../dist/safari/lib; sourceTree = "<group>"; };
+		957DFEC03099792B00669522 /* vendor */ = {isa = PBXFileReference; lastKnownFileType = folder; name = vendor; path = ../../../dist/safari/vendor; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		957DFE6A3099792B00669522 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+			);
+		};
+		957DFE7C3099792B00669522 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+			);
+		};
+		957DFE883099792B00669522 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+			);
+		};
+		957DFE923099792B00669522 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+			);
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		957DFE593099792A00669522 = {
+			isa = PBXGroup;
+			children = (
+				957DFE5E3099792A00669522 /* Shared (App) */,
+				957DFE673099792B00669522 /* Shared (Extension) */,
+				957DFE6F3099792B00669522 /* iOS (App) */,
+				957DFE803099792B00669522 /* macOS (App) */,
+				957DFE8F3099792B00669522 /* iOS (Extension) */,
+				957DFE993099792B00669522 /* macOS (Extension) */,
+				957DFE6E3099792B00669522 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		957DFE5E3099792A00669522 /* Shared (App) */ = {
+			isa = PBXGroup;
+			children = (
+				957DFE653099792A00669522 /* ViewController.swift */,
+				957DFE663099792B00669522 /* Assets.xcassets */,
+				957DFE5F3099792A00669522 /* Resources */,
+			);
+			path = "Shared (App)";
+			sourceTree = "<group>";
+		};
+		957DFE5F3099792A00669522 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				957DFE603099792A00669522 /* Main.html */,
+				957DFE623099792A00669522 /* Icon.png */,
+				957DFE633099792A00669522 /* Style.css */,
+				957DFE643099792A00669522 /* Script.js */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		957DFE673099792B00669522 /* Shared (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				957DFEB93099792B00669522 /* Resources */,
+				957DFE683099792B00669522 /* SafariWebExtensionHandler.swift */,
+			);
+			path = "Shared (Extension)";
+			sourceTree = "<group>";
+		};
+		957DFE6E3099792B00669522 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				957DFE6D3099792B00669522 /* Power Close.app */,
+				957DFE7F3099792B00669522 /* Power Close.app */,
+				957DFE8B3099792B00669522 /* Power Close Extension.appex */,
+				957DFE953099792B00669522 /* Power Close Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		957DFE6F3099792B00669522 /* iOS (App) */ = {
+			isa = PBXGroup;
+			children = (
+				957DFE703099792B00669522 /* AppDelegate.swift */,
+				957DFE723099792B00669522 /* SceneDelegate.swift */,
+				957DFE743099792B00669522 /* LaunchScreen.storyboard */,
+				957DFE773099792B00669522 /* Main.storyboard */,
+				957DFE7A3099792B00669522 /* Info.plist */,
+			);
+			path = "iOS (App)";
+			sourceTree = "<group>";
+		};
+		957DFE803099792B00669522 /* macOS (App) */ = {
+			isa = PBXGroup;
+			children = (
+				957DFE813099792B00669522 /* AppDelegate.swift */,
+				957DFE833099792B00669522 /* Main.storyboard */,
+				957DFE863099792B00669522 /* Info.plist */,
+			);
+			path = "macOS (App)";
+			sourceTree = "<group>";
+		};
+		957DFE8F3099792B00669522 /* iOS (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				957DFE903099792B00669522 /* Info.plist */,
+			);
+			path = "iOS (Extension)";
+			sourceTree = "<group>";
+		};
+		957DFE993099792B00669522 /* macOS (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				957DFE9A3099792B00669522 /* Info.plist */,
+			);
+			path = "macOS (Extension)";
+			sourceTree = "<group>";
+		};
+		957DFEB93099792B00669522 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				957DFEBA3099792B00669522 /* options */,
+				957DFEBB3099792B00669522 /* popup */,
+				957DFEBC3099792B00669522 /* background.js */,
+				957DFEBD3099792B00669522 /* icons */,
+				957DFEBE3099792B00669522 /* manifest.json */,
+				957DFEBF3099792B00669522 /* lib */,
+				957DFEC03099792B00669522 /* vendor */,
+			);
+			name = Resources;
+			path = "Shared (Extension)";
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		957DFE6C3099792B00669522 /* Power Close (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 957DFEAF3099792B00669522 /* Build configuration list for PBXNativeTarget "Power Close (iOS)" */;
+			buildPhases = (
+				957DFE693099792B00669522 /* Sources */,
+				957DFE6A3099792B00669522 /* Frameworks */,
+				957DFE6B3099792B00669522 /* Resources */,
+				957DFEAE3099792B00669522 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				957DFE8E3099792B00669522 /* PBXTargetDependency */,
+			);
+			name = "Power Close (iOS)";
+			productName = "Power Close (iOS)";
+			productReference = 957DFE6D3099792B00669522 /* Power Close.app */;
+			productType = "com.apple.product-type.application";
+		};
+		957DFE7E3099792B00669522 /* Power Close (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 957DFEB63099792B00669522 /* Build configuration list for PBXNativeTarget "Power Close (macOS)" */;
+			buildPhases = (
+				957DFE7B3099792B00669522 /* Sources */,
+				957DFE7C3099792B00669522 /* Frameworks */,
+				957DFE7D3099792B00669522 /* Resources */,
+				957DFEB53099792B00669522 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				957DFE983099792B00669522 /* PBXTargetDependency */,
+			);
+			name = "Power Close (macOS)";
+			productName = "Power Close (macOS)";
+			productReference = 957DFE7F3099792B00669522 /* Power Close.app */;
+			productType = "com.apple.product-type.application";
+		};
+		957DFE8A3099792B00669522 /* Power Close Extension (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 957DFEAB3099792B00669522 /* Build configuration list for PBXNativeTarget "Power Close Extension (iOS)" */;
+			buildPhases = (
+				957DFE873099792B00669522 /* Sources */,
+				957DFE883099792B00669522 /* Frameworks */,
+				957DFE893099792B00669522 /* Resources */,
+			);
+			buildRules = (
+			);
+			name = "Power Close Extension (iOS)";
+			productName = "Power Close Extension (iOS)";
+			productReference = 957DFE8B3099792B00669522 /* Power Close Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		957DFE943099792B00669522 /* Power Close Extension (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 957DFEB23099792B00669522 /* Build configuration list for PBXNativeTarget "Power Close Extension (macOS)" */;
+			buildPhases = (
+				957DFE913099792B00669522 /* Sources */,
+				957DFE923099792B00669522 /* Frameworks */,
+				957DFE933099792B00669522 /* Resources */,
+			);
+			buildRules = (
+			);
+			name = "Power Close Extension (macOS)";
+			productName = "Power Close Extension (macOS)";
+			productReference = 957DFE953099792B00669522 /* Power Close Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		957DFE5A3099792A00669522 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2710;
+				LastUpgradeCheck = 2710;
+				TargetAttributes = {
+					957DFE6C3099792B00669522 = {
+						CreatedOnToolsVersion = 27.1;
+					};
+					957DFE7E3099792B00669522 = {
+						CreatedOnToolsVersion = 27.1;
+					};
+					957DFE8A3099792B00669522 = {
+						CreatedOnToolsVersion = 27.1;
+					};
+					957DFE943099792B00669522 = {
+						CreatedOnToolsVersion = 27.1;
+					};
+				};
+			};
+			buildConfigurationList = 957DFE5D3099792A00669522 /* Build configuration list for PBXProject "Power Close" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 957DFE593099792A00669522;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 957DFE6E3099792B00669522 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				957DFE6C3099792B00669522 /* Power Close (iOS) */,
+				957DFE7E3099792B00669522 /* Power Close (macOS) */,
+				957DFE8A3099792B00669522 /* Power Close Extension (iOS) */,
+				957DFE943099792B00669522 /* Power Close Extension (macOS) */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		957DFE6B3099792B00669522 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
+				957DFE9D3099792B00669522 /* Icon.png in Resources */,
+				957DFE763099792B00669522 /* LaunchScreen.storyboard in Resources */,
+				957DFE9B3099792B00669522 /* Main.html in Resources */,
+				957DFEA13099792B00669522 /* Script.js in Resources */,
+				957DFEA53099792B00669522 /* Assets.xcassets in Resources */,
+				957DFE793099792B00669522 /* Main.storyboard in Resources */,
+				957DFE9F3099792B00669522 /* Style.css in Resources */,
+			);
+		};
+		957DFE7D3099792B00669522 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
+				957DFE9E3099792B00669522 /* Icon.png in Resources */,
+				957DFEA03099792B00669522 /* Style.css in Resources */,
+				957DFE853099792B00669522 /* Main.storyboard in Resources */,
+				957DFEA23099792B00669522 /* Script.js in Resources */,
+				957DFEA63099792B00669522 /* Assets.xcassets in Resources */,
+				957DFE9C3099792B00669522 /* Main.html in Resources */,
+			);
+		};
+		957DFE893099792B00669522 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
+				957DFECD3099792B00669522 /* lib in Resources */,
+				957DFECE3099792B00669522 /* vendor in Resources */,
+				957DFEC83099792B00669522 /* options in Resources */,
+				957DFECB3099792B00669522 /* icons in Resources */,
+				957DFECC3099792B00669522 /* manifest.json in Resources */,
+				957DFECA3099792B00669522 /* background.js in Resources */,
+				957DFEC93099792B00669522 /* popup in Resources */,
+			);
+		};
+		957DFE933099792B00669522 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
+				957DFEC63099792B00669522 /* lib in Resources */,
+				957DFEC73099792B00669522 /* vendor in Resources */,
+				957DFEC13099792B00669522 /* options in Resources */,
+				957DFEC43099792B00669522 /* icons in Resources */,
+				957DFEC53099792B00669522 /* manifest.json in Resources */,
+				957DFEC33099792B00669522 /* background.js in Resources */,
+				957DFEC23099792B00669522 /* popup in Resources */,
+			);
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		957DFE693099792B00669522 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+				957DFEA33099792B00669522 /* ViewController.swift in Sources */,
+				957DFE713099792B00669522 /* AppDelegate.swift in Sources */,
+				957DFE733099792B00669522 /* SceneDelegate.swift in Sources */,
+			);
+		};
+		957DFE7B3099792B00669522 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+				957DFEA43099792B00669522 /* ViewController.swift in Sources */,
+				957DFE823099792B00669522 /* AppDelegate.swift in Sources */,
+			);
+		};
+		957DFE873099792B00669522 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+				957DFEA73099792B00669522 /* SafariWebExtensionHandler.swift in Sources */,
+			);
+		};
+		957DFE913099792B00669522 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+				957DFEA83099792B00669522 /* SafariWebExtensionHandler.swift in Sources */,
+			);
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		957DFE8E3099792B00669522 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 957DFE8A3099792B00669522 /* Power Close Extension (iOS) */;
+			targetProxy = 957DFE8D3099792B00669522 /* PBXContainerItemProxy */;
+		};
+		957DFE983099792B00669522 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 957DFE943099792B00669522 /* Power Close Extension (macOS) */;
+			targetProxy = 957DFE973099792B00669522 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		957DFE603099792A00669522 /* Main.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				957DFE613099792A00669522 /* Base */,
+			);
+			name = Main.html;
+			sourceTree = "<group>";
+		};
+		957DFE743099792B00669522 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				957DFE753099792B00669522 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		957DFE773099792B00669522 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				957DFE783099792B00669522 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		957DFE833099792B00669522 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				957DFE843099792B00669522 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		957DFEA93099792B00669522 /* Debug configuration for PBXProject "Power Close" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		957DFEAA3099792B00669522 /* Release configuration for PBXProject "Power Close" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		957DFEAC3099792B00669522 /* Debug configuration for PBXNativeTarget "Power Close Extension (iOS)" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 449L9365N4;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Power Close Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2014–2026 Mosab Ibrahim";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.3.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.arabesquelabs.PowerClose.Extension;
+				PRODUCT_NAME = "Power Close Extension";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		957DFEAD3099792B00669522 /* Release configuration for PBXNativeTarget "Power Close Extension (iOS)" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 449L9365N4;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Power Close Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2014–2026 Mosab Ibrahim";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.3.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.arabesquelabs.PowerClose.Extension;
+				PRODUCT_NAME = "Power Close Extension";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		957DFEB03099792B00669522 /* Debug configuration for PBXNativeTarget "Power Close (iOS)" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 449L9365N4;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Power Close";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.3.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.arabesquelabs.PowerClose;
+				PRODUCT_NAME = "Power Close";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		957DFEB13099792B00669522 /* Release configuration for PBXNativeTarget "Power Close (iOS)" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 449L9365N4;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Power Close";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.3.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.arabesquelabs.PowerClose;
+				PRODUCT_NAME = "Power Close";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		957DFEB33099792B00669522 /* Debug configuration for PBXNativeTarget "Power Close Extension (macOS)" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 449L9365N4;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Power Close Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2014–2026 Mosab Ibrahim";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.3.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.arabesquelabs.PowerClose.Extension;
+				PRODUCT_NAME = "Power Close Extension";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		957DFEB43099792B00669522 /* Release configuration for PBXNativeTarget "Power Close Extension (macOS)" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 449L9365N4;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Power Close Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2014–2026 Mosab Ibrahim";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.3.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.arabesquelabs.PowerClose.Extension;
+				PRODUCT_NAME = "Power Close Extension";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		957DFEB73099792B00669522 /* Debug configuration for PBXNativeTarget "Power Close (macOS)" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 449L9365N4;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Power Close";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.3.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.arabesquelabs.PowerClose;
+				PRODUCT_NAME = "Power Close";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		957DFEB83099792B00669522 /* Release configuration for PBXNativeTarget "Power Close (macOS)" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 449L9365N4;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Power Close";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.3.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.arabesquelabs.PowerClose;
+				PRODUCT_NAME = "Power Close";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = macosx;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		957DFE5D3099792A00669522 /* Build configuration list for PBXProject "Power Close" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				957DFEA93099792B00669522 /* Debug configuration for PBXProject "Power Close" */,
+				957DFEAA3099792B00669522 /* Release configuration for PBXProject "Power Close" */,
+			);
+			defaultConfigurationName = Release;
+		};
+		957DFEAB3099792B00669522 /* Build configuration list for PBXNativeTarget "Power Close Extension (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				957DFEAC3099792B00669522 /* Debug configuration for PBXNativeTarget "Power Close Extension (iOS)" */,
+				957DFEAD3099792B00669522 /* Release configuration for PBXNativeTarget "Power Close Extension (iOS)" */,
+			);
+			defaultConfigurationName = Release;
+		};
+		957DFEAF3099792B00669522 /* Build configuration list for PBXNativeTarget "Power Close (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				957DFEB03099792B00669522 /* Debug configuration for PBXNativeTarget "Power Close (iOS)" */,
+				957DFEB13099792B00669522 /* Release configuration for PBXNativeTarget "Power Close (iOS)" */,
+			);
+			defaultConfigurationName = Release;
+		};
+		957DFEB23099792B00669522 /* Build configuration list for PBXNativeTarget "Power Close Extension (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				957DFEB33099792B00669522 /* Debug configuration for PBXNativeTarget "Power Close Extension (macOS)" */,
+				957DFEB43099792B00669522 /* Release configuration for PBXNativeTarget "Power Close Extension (macOS)" */,
+			);
+			defaultConfigurationName = Release;
+		};
+		957DFEB63099792B00669522 /* Build configuration list for PBXNativeTarget "Power Close (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				957DFEB73099792B00669522 /* Debug configuration for PBXNativeTarget "Power Close (macOS)" */,
+				957DFEB83099792B00669522 /* Release configuration for PBXNativeTarget "Power Close (macOS)" */,
+			);
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 957DFE5A3099792A00669522 /* Project object */;
+	validationLevel = 1;
+}

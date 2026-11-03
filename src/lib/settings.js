@@ -23,6 +23,12 @@ export const DEFAULTS = {
 // only when that setting is turned on, and given back when it's turned off.
 export const PAGE_ACCESS = { origins: ['<all_urls>'] };
 
+// Safari, whose extension pages are safari-web-extension:// ones. It shows an
+// extension the addresses of tabs only on sites it may read, so there the
+// access is asked for from the start (in its manifest's host_permissions):
+// it's always on, and isn't given back.
+export const SAFARI = location.protocol === 'safari-web-extension:';
+
 export function load() {
   return new Promise(function (resolve) {
     chrome.storage.sync.get(DEFAULTS, resolve);
