@@ -1,4 +1,4 @@
-import { PAGE_ACCESS, load, onChange, save } from '../lib/settings.js';
+import { PAGE_ACCESS, SAFARI, load, onChange, save } from '../lib/settings.js';
 
 const form = document.getElementById('settings');
 const saveState = document.getElementById('save-state');
@@ -45,7 +45,9 @@ function setPageText(field) {
     pageTextError.hidden = true;
     if (!field.checked) {
         store({ matchPageText: false });
-        chrome.permissions.remove(PAGE_ACCESS);
+        if (!SAFARI) {
+            chrome.permissions.remove(PAGE_ACCESS);
+        }
         return;
     }
     chrome.permissions.request(PAGE_ACCESS, function (granted) {
@@ -96,6 +98,13 @@ function showShortcut() {
             return kbd;
         }));
     });
+}
+
+// Safari has no page for changing extensions' shortcuts, and has already
+// asked for access to the sites (as Power Close was allowed on them).
+if (SAFARI) {
+    document.getElementById('change-shortcut').hidden = true;
+    document.getElementById('page-text-ask').hidden = true;
 }
 
 document.getElementById('change-shortcut').addEventListener('click', function () {

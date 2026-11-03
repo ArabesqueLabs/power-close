@@ -1,4 +1,4 @@
-import { DEFAULTS, PAGE_ACCESS, load } from '../lib/settings.js';
+import { DEFAULTS, PAGE_ACCESS, SAFARI, load } from '../lib/settings.js';
 import { PAGE_TEXT_LIMIT, parseQuery, suggestions, tabMatches } from '../lib/match.js';
 
 const input = document.getElementById('keyword');
@@ -308,6 +308,12 @@ document.querySelectorAll('a[href]').forEach(function (link) {
 
 input.focus();
 recount(false);
+
+if (SAFARI) {
+    chrome.permissions.contains(PAGE_ACCESS, function (granted) {
+        document.getElementById('no-access').hidden = granted;
+    });
+}
 
 load().then(function (loaded) {
     settings = loaded;
